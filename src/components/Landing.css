@@ -1,0 +1,88 @@
+/* -------------------- Hero Home ---------------------- */
+#hero-home {
+  text-align: center;
+  overflow: hidden;
+}
+.hero-img {
+  margin: -50px 40px -100px 40px;
+  z-index: -1;
+  overflow: hidden;
+  position: relative;
+  transform: scaleX(-1);
+}
+.hero-img > img {
+  width: 100%;
+  object-fit: cover;
+  max-width: 100%;
+}
+.hero-text {
+  width: 80%;
+  z-index: 1;
+  margin: 0px auto;
+}
+
+.hero-text div {
+  line-height: 1.6em;
+}
+
+.hero-text > button {
+  margin: 24px 0px 20px 0px;
+  background-color: black;
+  color: white;
+  padding: 12px 34px;
+}
+
+/* -------------------- Realeses --------------------- */
+#releases {
+}
+#releases .header {
+  margin: 0px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#releases .header > div {
+  border-bottom: 2px solid #a7a7a7;
+}
+.items {
+  display: flex;
+}
+.item {
+  margin: 15px;
+  /* border: 1px solid #a7a7a7; */
+  overflow: hidden;
+}
+.item img {
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: -30px;
+}
+.item-header {
+  margin-bottom: 4px;
+}
+.item-price {
+  margin: 4px;
+}
+.item-text {
+  text-align: center;
+  padding: 8px;
+}
+
+/* -------------------- Gaurantee ------------------------- */
+#guarantee {
+  background-color: black;
+  text-align: center;
+  padding: 10px 20px;
+}
+#guarantee-header {
+  color: white;
+  font-size: 20px;
+  margin: 40px 20px 20px 20px;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+#guarantee > button {
+  margin: 20px 0px 40px 0px;
+  background-color: white;
+}

@@ -1,0 +1,87 @@
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 0%;
+  width: calc(100% - 40px);
+  z-index: 3; /* Sit on top */
+  /* position: fixed; Stay in place */
+  left: 0;
+  top: 0;
+  padding: 0px 20px;
+  overflow-y: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+#myNav {
+  position: fixed; /* Stay in place */
+  background-color: rgb(0, 0, 0); /* Black fallback color */
+  background-color: rgba(0, 0, 0, 1); /* Black w/opacity */
+}
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  width: 100%; /* 100% width */
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+#myNav .overlay-content {
+  top: 5%; /* 25% from the top */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+  text-align: center; /* Centered text/links */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 34px;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+#myNav a {
+  color: white;
+}
+
+#myNav .overlay-content h2 {
+  color: white;
+}
+
+/* When you mouse over the navigation links, change their color */
+#myNav .overlay a:hover,
+#myNav .overlay a:focus {
+  color: #f1f1f1;
+}
+
+#myNav .overlay-nav {
+  display: flex;
+  margin: 10px 0px;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  text-align: center;
+}
+.overlay-nav i {
+  font-size: 24px;
+}
+
+/* Position the close button (top right corner) */
+/* .overlay .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+  } */
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}

@@ -1,0 +1,41 @@
+.filters-overlay-button {
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    z-index: 1;
+    background-color: white;
+    width: calc(100% - 40px);
+    margin: 0px 20px;
+  }
+  .filters-overlay-button > button {
+    width: 100%;
+  }
+  
+  #filter-overlay {
+    position: fixed;
+    top: 90px;
+    height:100%;
+    background-color: white;
+  }
+  #filter-overlay .overlay-content{
+      max-width: 600px;
+      margin: auto;
+  } 
+  
+  .ofilter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #filter-overlay a {
+    color: black;
+    font-size: 40px;
+    font-weight: 500;
+  }
+  @media only screen and (min-width: 900px) {
+    .filters-overlay-button {
+      display: none;
+    }
+  }
+  
