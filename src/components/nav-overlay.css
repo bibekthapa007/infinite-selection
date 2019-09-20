@@ -34,6 +34,7 @@
 /* The navigation links inside the overlay */
 .overlay a {
   padding: 8px;
+  cursor: pointer;
   text-decoration: none;
   font-size: 34px;
   display: block; /* Display block instead of inline */

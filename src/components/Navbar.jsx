@@ -18,8 +18,10 @@ function Navbar() {
             <i className="fa fa-shopping-bag" />
           </div>
           <div className="nav-header">
-            <span className="nav-header-1"> Infinite</span>
-            <span className="nav-header-2">Selection</span>
+            <Link to="/">
+              <span className="nav-header-1"> Infinite</span>
+              <span className="nav-header-2">Selection</span>
+            </Link>
           </div>
           <a className="closebtn" onClick={closeNav}>
             ×
@@ -41,10 +43,10 @@ function Navbar() {
           <div className="shoping-bag">
             <i className="fa fa-shopping-bag" />
           </div>
-          <div className="nav-header">
-            <span className="nav-header-1"> Infinite</span>
-            <span className="nav-header-2">Selection</span>
-          </div>
+            <Link to="/" className="nav-header" >
+              <span className="nav-header-1"> Infinite</span>
+              <span className="nav-header-2">Selection</span>
+            </Link>
           <div className="nav-links">
             <Link to="/browse" className="nav-link">
               Browse Sneakers

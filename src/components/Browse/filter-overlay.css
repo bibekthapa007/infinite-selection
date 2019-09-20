@@ -9,11 +9,12 @@
   }
   .filters-overlay-button > button {
     width: 100%;
+    cursor: pointer;
   }
   
   #filter-overlay {
     position: fixed;
-    top: 90px;
+    top: 60px;
     height:100%;
     background-color: white;
   }
@@ -30,6 +31,7 @@
   
   #filter-overlay a {
     color: black;
+    cursor: pointer;
     font-size: 40px;
     font-weight: 500;
   }

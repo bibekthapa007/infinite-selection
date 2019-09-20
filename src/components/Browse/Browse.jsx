@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./browse.css";
 import "./filter-overlay.css";
-import data from "../data.json";
 import Item from "./Item";
+import Filter from "./Filter";
+import { ProductsContext } from "./ProductsContext";
 
 function Browse() {
   const [height, setHeight] = useState(0);
-  useEffect(() => {
-    console.log(data);
-  }, []);
+  const {products} = useContext(ProductsContext);
   return (
     <div>
       <div className="filters-overlay-button">
@@ -29,22 +28,22 @@ function Browse() {
                     ×
                   </a>
                 </div>
-                <FilterContent></FilterContent>
+                <Filter></Filter>
               </div>
             </div>
           </div>
         </div>
         <div className="filters">
           <h2>Filters</h2>
-          <FilterContent></FilterContent>
+          <Filter></Filter>
         </div>
         <div className="showcase">
           <div className="header">
             <h2>Browse Sneakers</h2>
-            <div>63 Results</div>
+            <div>{products.length} Results</div>
           </div>
           <div className="items">
-            {data.sneakers.map(sneaker => {
+            {products.map(sneaker => {
               return <Item key={sneaker.image} {...sneaker} />;
             })}
           </div>
@@ -55,25 +54,3 @@ function Browse() {
 }
 
 export default Browse;
-
-
-function FilterContent() {
-  return (
-    <div className="filter-content">
-      <h3>Brands</h3>
-      <div className="brands">
-        <button>Adidas</button>
-        <button>Jordan</button>
-      </div>
-      <h3>Men's size</h3>
-      <div className="size">
-        <button>10</button>
-        <button>11</button>
-        <button>12</button>
-        <button>8</button>
-        <button>9</button>
-      </div>
-      <button className="apply">Apply</button>
-    </div>
-  );
-}

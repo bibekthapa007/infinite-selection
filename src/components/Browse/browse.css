@@ -92,6 +92,11 @@
   margin: 20px 0px;
 }
 
+.brands >   .active, .size > .active{
+  color: white ;
+  background-color: black;
+}
+
 @media only screen and (min-width: 900px) {
   .filters {
     display: block;
@@ -106,3 +111,4 @@
     width: calc(25% - 70px);
   }
 }
+

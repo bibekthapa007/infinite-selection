@@ -20,11 +20,15 @@ nav {
     text-transform: uppercase;
     font-family: "Playfair Display", serif;
   }
+
+  .nav-header {
+    text-decoration: none;
+    color: black;
+  }
   
   .nav-header-1 {
     display: block;
     font-size: 22px;
-  
     font-weight: 500;
   }
   .nav-header-2 {

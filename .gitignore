@@ -9,6 +9,8 @@
 # production
 /build
 
+/scrapping101
+
 # misc
 .DS_Store
 .env
