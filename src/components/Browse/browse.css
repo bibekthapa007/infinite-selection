@@ -32,7 +32,9 @@
   border: 1px solid white;
   overflow: hidden;
   align-items: center;
+  color: #a7a7a7;
   display: flex;
+  text-decoration: none;
   flex-direction: column;
 }
 .item:hover {

@@ -43,3 +43,7 @@ button {
   outline: none;
   border: none;
 }
+
+.error {
+  color: red;
+}

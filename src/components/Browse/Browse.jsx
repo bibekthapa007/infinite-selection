@@ -7,7 +7,10 @@ import { ProductsContext } from "./ProductsContext";
 
 function Browse() {
   const [height, setHeight] = useState(0);
-  const {products} = useContext(ProductsContext);
+  const {products, loading} = useContext(ProductsContext);
+  const close = () => {
+    setHeight(0);
+  }
   return (
     <div>
       <div className="filters-overlay-button">
@@ -28,24 +31,24 @@ function Browse() {
                     ×
                   </a>
                 </div>
-                <Filter></Filter>
+                <Filter close={() => close()} />
               </div>
             </div>
           </div>
         </div>
         <div className="filters">
           <h2>Filters</h2>
-          <Filter></Filter>
+          <Filter close={() =>  close()} />
         </div>
         <div className="showcase">
           <div className="header">
             <h2>Browse Sneakers</h2>
-            <div>{products.length} Results</div>
+            <div>{products ? products.length : "Loading" } Results</div>
           </div>
           <div className="items">
-            {products.map(sneaker => {
+            {products && loading ? products.map(sneaker => {
               return <Item key={sneaker.image} {...sneaker} />;
-            })}
+            }): "Loading"}
           </div>
         </div>
       </section>

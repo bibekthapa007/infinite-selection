@@ -9,6 +9,8 @@
 # production
 /build
 
+/src/components/Firebase.js
+
 /scrapping101
 
 # misc

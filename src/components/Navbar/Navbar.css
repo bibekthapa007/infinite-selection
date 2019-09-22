@@ -48,6 +48,7 @@ nav {
   }
   .nav-login {
     color: #a7a7a7;
+    text-decoration: none;
   }
   .hambuger{
     width: 20px;

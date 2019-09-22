@@ -1,12 +1,39 @@
-import React, { useState } from "react";
-import { default as data } from "./final.json";
+import React, { useState, useEffect } from "react";
+// import { default as data } from "./final.json";
+import Firebase from "../Firebase";
 
 export const ProductsContext = React.createContext();
 
+var data;
+
 const ProductsContextProvider = props => {
-  const [products, setProducts] = useState(data);
-  const [size, setSize] = useState(0);
-  const [brand, setBrand] = useState(0);
+  const [products, setProducts] = useState(null);
+  const [size, setSize] = useState(null);
+  const [brand, setBrand] = useState(null);
+  const [apply, setApply] = useState(0);
+  const [loading, setLoading] = useState(1);
+
+  useEffect(() => {
+    async function fetchData() {
+      var colRef = Firebase.firestore().collection("products");
+      if (brand) {
+        colRef = colRef.where("brand", "==", brand);
+      }
+      if (size) {
+        colRef = colRef.where("size", "array-contains", size);
+      }
+      return await colRef
+        .get()
+        .then(querySnapshot => {
+          data = querySnapshot.docs.map(doc => doc.data());
+          // console.log(data);
+          setProducts(data);
+          setLoading(1);
+        })
+        .catch(e => console.log(e));
+    }
+    fetchData();
+  }, [apply]);
 
   const updateBrand = newBrand => {
     console.log(size, newBrand);
@@ -19,18 +46,8 @@ const ProductsContextProvider = props => {
   };
 
   const applyFilter = () => {
-    const updatedData = data
-      .filter(product =>
-        brand ? product.brand === brand : product.brand
-      )
-      .filter(product => {
-        if (size) {
-          return product.size.includes(size);
-        } else {
-          return 1;
-        }
-      });
-    setProducts(updatedData);
+    setLoading(0);
+    setApply(1 + apply);
   };
 
   const updateSize = newSize => {
@@ -51,7 +68,8 @@ const ProductsContextProvider = props => {
         brand,
         updateBrand,
         updateSize,
-        applyFilter
+        applyFilter, 
+        loading
       }}
     >
       {props.children}

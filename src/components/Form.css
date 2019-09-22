@@ -1,0 +1,81 @@
+
+.primaryBtn{
+    color: white;
+    background-color: black;
+    margin-bottom: 15px;
+}
+
+/* ------------------ Login ------------------------ */
+
+.login {
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+form {
+  width: calc(80% - 20px);
+  margin: auto;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.input {
+  border: 1px solid #a7a7a7;
+  position: relative;
+  text-align: left;
+  margin: 20px 0px;
+}
+
+.input > input {
+  background-color: white;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 15px;
+}
+.input1 > input {
+  padding-right: 0px;
+  width: calc(100% - 52px);
+}
+
+.input1 > button {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  color: black;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  color: black;
+  position: relative;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.link::after {
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  content: "";
+  background-color: #0b0b0b;
+  bottom: -10px;
+  left: 0;
+}
+
+form > button {
+  display: block;
+  width: 100%;
+}
+
+.term{
+    margin: 10px 30px 20px 30px;
+}
+

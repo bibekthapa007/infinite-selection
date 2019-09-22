@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
-import {ProductsContext} from "./ProductsContext";
-function Filter() {
+import { ProductsContext } from "./ProductsContext";
+
+function Filter({ close }) {
   const sizeId = [10, 11, 12, 8, 9];
-  const { updateBrand, updateSize, applyFilter, size, brand } = useContext(
-    ProductsContext
-  );
+  const {
+    updateBrand,
+    updateSize,
+    applyFilter,
+    size,
+    brand,
+    loading
+  } = useContext(ProductsContext);
 
   return (
     <div className="filter-content">
@@ -34,7 +40,14 @@ function Filter() {
           );
         })}
       </div>
-      <button onClick={() => applyFilter()}  >Apply</button>
+      <button
+        onClick={() => {
+          applyFilter();
+          close();
+        }}
+      >
+        {loading ? "Apply" : "Loading"}
+      </button>
     </div>
   );
 }
