@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { default as data } from "./final.json";
 import Firebase from "../Firebase";
 
 export const ProductsContext = React.createContext();

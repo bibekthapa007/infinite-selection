@@ -10,9 +10,10 @@
 /build
 
 /src/components/Firebase.js
+/src/components/data.json
+/src/components/Browse/final.json
 
-/scrapping101
-
+/scrapping101/**
 # misc
 .DS_Store
 .env
