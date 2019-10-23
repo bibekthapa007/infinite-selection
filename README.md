@@ -7,10 +7,12 @@ Convert a  src/components/FirebaseDemo.js to Firebase.js and change the api key 
 ```
 git clone https://github.com/Bitha007/infinite-selection.git
 ```
-# Intall the dependencies
+## Intall the dependencies
+```
 npm install
+```
 
-# Run the Project
+## Run the Project
 ```
 npm start
 ```
