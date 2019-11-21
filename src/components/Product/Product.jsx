@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./Product.css";
-import { default as data } from "../Browse/final.json";
+import Firebase from "../Firebase";
 
-function unslugify(iid) {
-  const lid = iid.split("-").join(" ");
-  return lid;
-}
+import "./Product.css";
+
+let productsRef = Firebase.firestore().collection("products");
+
 
 function Product({ match }) {
   const [product, setProduct] = useState(null);
@@ -13,20 +12,27 @@ function Product({ match }) {
   const [found, setFound] = useState(true);
 
   useEffect(() => {
-    const name = unslugify(id);
-    const product = data.filter(p => {
-      return p.name.toLowerCase() === name;
-    });
-    if (product.length === 1) {
-      setProduct(product[0]);
-    } else {
-      setFound(false);
-    }
+
+    const fetchProduct = async () => {
+      let productRef = productsRef.doc(id)
+      return await productRef
+        .get()
+        .then(doc => {
+          let product = doc.data();
+          // console.log(product);
+          setProduct(product);
+        })
+        .catch(e => {
+          console.log(e);
+          setFound(false);
+        });
+    };
+    fetchProduct();
   }, [id]);
-  console.log(found);
+  // console.log(found,  product);
 
   return (
-    <div className="product-container" >
+    <div className="product-container">
       {found ? (
         product ? (
           <section className="product">
@@ -87,7 +93,9 @@ function Product({ match }) {
         ) : (
           <div>Loading</div>
         )
-      ) : <div>Not Found</div>}
+      ) : (
+        <div>Not Found</div>
+      )}
     </div>
   );
 }

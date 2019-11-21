@@ -11,21 +11,26 @@ const ProductsContextProvider = props => {
   const [brand, setBrand] = useState(null);
   const [apply, setApply] = useState(0);
   const [loading, setLoading] = useState(1);
+  let productsRef = Firebase.firestore().collection("products");
 
   useEffect(() => {
     async function fetchData() {
-      var colRef = Firebase.firestore().collection("products");
       if (brand) {
-        colRef = colRef.where("brand", "==", brand);
+        productsRef = productsRef.where("brand", "==", brand);
       }
       if (size) {
-        colRef = colRef.where("size", "array-contains", size);
+        productsRef = productsRef.where("size", "array-contains", size);
       }
-      return await colRef
+      return await productsRef
         .get()
         .then(querySnapshot => {
-          data = querySnapshot.docs.map(doc => doc.data());
-          // console.log(data);
+          data = querySnapshot.docs.map(doc => {
+            var d = doc.data();
+            d.id = doc.id;
+            // console.log(d,doc.id)
+            return d;
+          });
+          console.log(data);
           setProducts(data);
           setLoading(1);
         })
@@ -67,7 +72,7 @@ const ProductsContextProvider = props => {
         brand,
         updateBrand,
         updateSize,
-        applyFilter, 
+        applyFilter,
         loading
       }}
     >

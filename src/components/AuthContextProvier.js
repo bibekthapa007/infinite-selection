@@ -6,7 +6,7 @@ export const AuthContext = React.createContext();
 
 const AuthContextProvider = props => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [data, setData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     return Firebase.auth().onAuthStateChanged(user => {
@@ -18,15 +18,15 @@ const AuthContextProvider = props => {
           .doc(user.uid)
           .get()
           .then(doc => {
-            setData(doc.data());
+            setUserData(doc.data());
           });
       }else{
-        setData(null);
+        setUserData(null);
       }
     });
   }, []);
   return (
-    <AuthContext.Provider value={{ currentUser, data }}>
+    <AuthContext.Provider value={{ currentUser, userData }}>
       {props.children}
     </AuthContext.Provider>
   );

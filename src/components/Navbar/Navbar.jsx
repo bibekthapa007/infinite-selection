@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, NavLink, withRouter } from "react-router-dom";
 import { AuthContext } from "../AuthContextProvier";
 import Firebase from "../Firebase";
 import "./Navbar.css";
 import "./nav-overlay.css";
 
 function Navbar({ history }) {
-  const { currentUser, data } = useContext(AuthContext);
+  const { currentUser, userData } = useContext(AuthContext);
   // console.log(currentUser);
   const logOut = () => {
     Firebase.auth()
@@ -70,10 +70,10 @@ function Navbar({ history }) {
           <div className="nav-sublink">
             {currentUser ? (
               <div className="nav-login">
-                {data ? (
+                {userData ? (
                   <div>
-                    {data.firstName}
-                    {data.lastName}
+                    {userData.firstName}
+                    {userData.lastName}
                   </div>
                 ) : null}
               </div>
@@ -111,9 +111,9 @@ export default withRouter(Navbar);
 function NavLinks({ closeNav }) {
   return (
     <React.Fragment>
-      <Link className="nav-link" onClick={closeNav} to="/browse">
+      <NavLink className="nav-link" activeClassName="nav-active" onClick={closeNav} to="/browse">
         Browse Sneakers
-      </Link>
+      </NavLink>
       <a className="nav-link" href="#">
         How We Clean
       </a>

@@ -1,17 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function slugify(name) {
-  const lid = [];
-  name.split(" ").map(p => {
-    return(
-    lid.push(p.toLowerCase()));
-  });
-  return lid.join("-");
-}
-
-function Item({ image, name, cost, costValue }) {
-  const id = slugify(name);
+function Item({ id, image, name, cost, costValue }) {
   // console.log(id);
   return (
     <Link to={`/product/${id}`} className="item" >

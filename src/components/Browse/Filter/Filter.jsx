@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductsContext } from "./ProductsContext";
+import { ProductsContext } from "../ProductsContext";
 
 function Filter({ close }) {
   const sizeId = [10, 11, 12, 8, 9];
