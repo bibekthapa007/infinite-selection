@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Firebase from "../Firebase";
-
+import { AuthContext } from "../AuthContextProvier";
 import "./Product.css";
 
 let productsRef = Firebase.firestore().collection("products");
-
 
 function Product({ match }) {
   const [product, setProduct] = useState(null);
   const id = match.params.id;
   const [found, setFound] = useState(true);
+  const { currentUser, userData } = useContext(AuthContext);
 
   useEffect(() => {
-
     const fetchProduct = async () => {
-      let productRef = productsRef.doc(id)
+      let productRef = productsRef.doc(id);
       return await productRef
         .get()
         .then(doc => {
@@ -29,6 +28,17 @@ function Product({ match }) {
     };
     fetchProduct();
   }, [id]);
+  const addItemToCart = () => {
+    if (currentUser.id) {
+      let cartRef = Firebase.firestore()
+        .collection("cart")
+        .doc(currentUser);
+      // cartRef;
+    } else {
+      // TODO popup login
+    }
+  };
+
   // console.log(found,  product);
 
   return (

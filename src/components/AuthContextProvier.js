@@ -25,6 +25,7 @@ const AuthContextProvider = props => {
       }
     });
   }, []);
+  console.log(currentUser, userData)
   return (
     <AuthContext.Provider value={{ currentUser, userData }}>
       {props.children}

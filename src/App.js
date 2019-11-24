@@ -9,6 +9,7 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import AuthContextProvider from "./components/AuthContextProvier";
 import Cart from "./components/Cart/Cart";
+import Search from "./components/Search/Search";
 
 class App extends Component {
   render() {
@@ -22,7 +23,7 @@ class App extends Component {
             <Route path="/signup" component={SignUp} />
             <Route path="/login" component={LogIn} />
             <Route path="/cart" component={Cart} />
-
+            <Route path="/search" component={Search} />
             <Route path="/product/:id" component={Product} />
           </div>
         </Router>

@@ -57,9 +57,11 @@ function Navbar({ history }) {
       </div>
       <nav>
         <div className="container">
+          <Link to="/cart">
           <div className="shoping-bag">
             <i className="fa fa-shopping-bag" />
           </div>
+          </Link>
           <Link to="/" className="nav-header">
             <span className="nav-header-1"> Infinite</span>
             <span className="nav-header-2">Selection</span>
