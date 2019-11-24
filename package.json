@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "algoliasearch": "^3.35.1",
-    "dotenv": "^8.2.0",
     "firebase": "^7.5.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -17,5 +16,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   }
 }
