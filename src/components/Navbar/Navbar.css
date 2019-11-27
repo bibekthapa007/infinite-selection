@@ -97,6 +97,7 @@ nav {
     position: absolute;
     border-radius: 50px;
     display: flex;
+    bottom: 10px;
     align-items: center;
     justify-content: center;
     right: 45px;

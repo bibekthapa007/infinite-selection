@@ -7,7 +7,7 @@ const Hits = ({ hits }) => (
   <div className="search-items">
     
     {hits.map(hit => {
-      console.log(hits)
+      // console.log(hits)
       const { objectID, image, cost, costValue, name } = hit;
       return (
         <Link

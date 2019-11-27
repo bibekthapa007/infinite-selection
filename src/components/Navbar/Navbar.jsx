@@ -8,6 +8,7 @@ import "./nav-overlay.css";
 function Navbar({ history }) {
   const { currentUser, userData } = useContext(AuthContext);
   // console.log(currentUser);
+  const [item, setItem] = useState("");
   const logOut = () => {
     Firebase.auth()
       .signOut()
@@ -16,6 +17,16 @@ function Navbar({ history }) {
   const [height, setHeight] = useState(0);
   const closeNav = () => {
     setHeight(0);
+  };
+
+  const handleSearch = e => {
+    e.preventDefault();
+    console.log(item);
+    history.push({
+      pathname:'/search',
+      state:{searchid:item}
+    });
+
   };
 
   return (
@@ -58,9 +69,9 @@ function Navbar({ history }) {
       <nav>
         <div className="container">
           <Link to="/cart">
-          <div className="shoping-bag">
-            <i className="fa fa-shopping-bag" />
-          </div>
+            <div className="shoping-bag">
+              <i className="fa fa-shopping-bag" />
+            </div>
           </Link>
           <Link to="/" className="nav-header">
             <span className="nav-header-1"> Infinite</span>
@@ -84,20 +95,24 @@ function Navbar({ history }) {
                 Login
               </Link>
             )}
-            <div className="search-box">
-              <input
-                className="search-txt"
-                type="search-text"
-                name="search-txt"
-                placeholder="Type to search"
-              />
-              <a className="search-btn" href="#">
-                <i className="fa fa-search" />
-              </a>
-            </div>
-            <div>
-              <i className="fa fa-shopping-bag" />
-            </div>
+            <form onSubmit={handleSearch}>
+              <div className="search-box">
+                <input
+                  className="search-txt"
+                  type="search-text"
+                  name="search-txt"
+                  value={item}
+                  onChange={e => setItem(e.target.value)}
+                  placeholder="Type to search"
+                />
+                <a className="search-btn" href="#">
+                  <i onClick={handleSearch} className="fa fa-search" />
+                </a>
+              </div>
+              <div>
+                <i className="fa fa-shopping-bag" />
+              </div>
+            </form>
           </div>
           <div className="hambuger">
             <i onClick={() => setHeight(100)} className="fa fa-bars" />
@@ -113,7 +128,12 @@ export default withRouter(Navbar);
 function NavLinks({ closeNav }) {
   return (
     <React.Fragment>
-      <NavLink className="nav-link" activeClassName="nav-active" onClick={closeNav} to="/browse">
+      <NavLink
+        className="nav-link"
+        activeClassName="nav-active"
+        onClick={closeNav}
+        to="/browse"
+      >
         Browse Sneakers
       </NavLink>
       <a className="nav-link" href="#">
